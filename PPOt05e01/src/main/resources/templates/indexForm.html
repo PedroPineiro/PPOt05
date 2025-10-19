@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index Form</title>
+  </head>
+  <body>
+    <form action="#" method="post" th:action="@{/formSubmit}" th:object="${formInfo}" >
+      <label>Numero 1 <input type="text" id="numero1" th:field="*{numero1}"/></label>
+      <label>Numero 2 <input type="text" id="numero2" th:field="*{numero2}"/></label>
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>

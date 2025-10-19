@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Form</title>
+</head>
+<body>
+    <form th:action="@{/submit}" th:object="${dateForm}" method="post">
+        <label for="date1">Fecha 1:</label>
+        <input type="date" id="date1" th:field="*{date1}" />
+        <span style="color:red" th:if="${errorDate1}" th:text="${errorDate1}"></span>
+        <br>
+
+        <label for="date2">Fecha 2:</label>
+        <input type="date" id="date2" th:field="*{date2}" />
+        <span style="color:red" th:if="${errorDate2}" th:text="${errorDate2}"></span>
+        <br><br>
+
+        <p>Elige una opción:</p>
+        <p>
+            <input type="radio" th:field="*{opcion}" value="1" /> Días entre fechas
+        </p>
+        <p>
+            <input type="radio" th:field="*{opcion}" value="2" /> Años bisiestos
+        </p>
+        <p>
+            <input type="radio" th:field="*{opcion}" value="3" /> Años con 1 de enero domingo
+        </p>
+        <span style="color:red" th:if="${errorOpcion}" th:text="${errorOpcion}"></span>
+
+        <br><br>
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+</html>

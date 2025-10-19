@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elige tu película favorita</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <style>
+      td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+      }
+      img {
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center my-4">Elige tu película favorita</h1>
+
+    <table class="table table-bordered text-center">
+      <tr>
+        <td>
+          <a href="/vote?foto=0">
+            <img src="img/scarface.jpg" alt="Scarface" style="width: 200px" />
+          </a>
+          <p>Scarface</p>
+        </td>
+        <td>
+          <a href="/vote?foto=1">
+            <img src="img/thething.jpg" alt="The Thing" style="width: 200px" />
+          </a>
+          <p>The Thing</p>
+        </td>
+        <td>
+          <a href="/vote?foto=2">
+            <img
+              src="img/leon.jpg"
+              alt="Leon The Profesional"
+              style="width: 200px"
+            />
+          </a>
+          <p>Leon The Professional</p>
+        </td>
+      </tr>
+      <tr>
+        <td><i class="bi bi-heart"></i><span th:text="${votos[0]}"></span></td>
+        <td><i class="bi bi-heart"></i><span th:text="${votos[1]}"></span></td>
+        <td><i class="bi bi-heart"></i><span th:text="${votos[2]}"></span></td>
+      </tr>
+    </table>
+  </body>
+</html>
