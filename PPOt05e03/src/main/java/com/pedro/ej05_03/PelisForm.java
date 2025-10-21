@@ -1,22 +1,17 @@
 package com.pedro.ej05_03;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class PelisForm {
     
+    @NotBlank(message = "El email no puede estar vacío")
+    @Email(message = "Introduce un email válido")
     private String email;
-    private int opcion;
     
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public int getOpcion() {
-        return opcion;
-    }
-    public void setOpcion(int opcion) {
-        this.opcion = opcion;
-    }
-
-    
+    private Integer opcion;
 }

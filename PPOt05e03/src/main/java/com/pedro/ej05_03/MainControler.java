@@ -1,37 +1,41 @@
 package com.pedro.ej05_03;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class MainControler {
     
     // UN SOLO Map que guarda todos los votos
-    private final Map<Integer, Integer> votos = new HashMap<>();
-    
-    // Constructor: inicializar votos en 0
-    public MainControler() {
-        votos.put(0, 0);  // Scarface empieza con 0 votos
-        votos.put(1, 0);  // The Thing empieza con 0 votos  
-        votos.put(2, 0);  // Leon empieza con 0 votos
-    }
+    private final MainService mainService = new MainService();
     
     @GetMapping({"/", "/home", "/index"})
     public String index(Model model) {
-        model.addAttribute("votos", votos);
+        model.addAttribute("votos", mainService.getVotos());
+        model.addAttribute("pelisForm", new PelisForm());
         return "index";
     }
 
-    @GetMapping("/vote")
-    public String vote(@RequestParam("foto") int fotoId, Model model) {
-            // Obtengo el valor actual y le sumo 1
-            int votosActuales = votos.get(fotoId);
-            votos.put(fotoId, votosActuales + 1);
+    @PostMapping("/pelisForm/submit")
+    public String vote(@Valid PelisForm pelisform, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("votos", mainService.getVotos());
+            model.addAttribute("pelisForm", pelisform);
+            return "index";
+        }
+
+        if(mainService.yaHaVotado(pelisform.getEmail())) {
+            model.addAttribute("error", "Ya has votado con este email");
+            model.addAttribute("votos", mainService.getVotos());
+            model.addAttribute("pelisForm", pelisform);
+            return "index";
+        }
+        mainService.registrarVoto(pelisform.getEmail(), pelisform.getOpcion());
         return "redirect:/"; // Volver a la página principal
     }
     
