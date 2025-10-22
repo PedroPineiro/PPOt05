@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Enlaces Externos - Flamengo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header>
+      <h1>Enlaces Externos</h1>
+      <th:block th:replace="fragments/header.html :: nav"></th:block>
+    </header>
+
+    <main>
+      <ul class="enlaces">
+        <li>
+          <a href="https://www.flamengo.com.br" target="_blank"
+            >Página oficial Flamengo</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://es.wikipedia.org/wiki/Clube_de_Regatas_do_Flamengo"
+            target="_blank"
+            >Wikipedia</a
+          >
+        </li>
+        <li>
+          <a href="https://twitter.com/Flamengo" target="_blank"
+            >Twitter oficial</a
+          >
+        </li>
+        <li>
+          <a href="https://www.instagram.com/flamengo/" target="_blank"
+            >Instagram oficial</a
+          >
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>🔗 Recursos externos sobre Flamengo</p>
+    </footer>
+  </body>
+</html>

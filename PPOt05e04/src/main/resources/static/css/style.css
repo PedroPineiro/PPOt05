@@ -1,0 +1,91 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #111;
+    color: #fff;
+}
+
+header {
+    background-color: #d6001c;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #fff;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    max-width: 200px;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Lista palmarés */
+.palmares-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.palmares-lista li {
+    background: #222;
+    margin: 8px 0;
+    padding: 10px;
+    border-left: 5px solid #d6001c;
+}
+
+/* Galería */
+.galeria {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.galeria img {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+/* Enlaces */
+.enlaces {
+    list-style: none;
+    padding: 0;
+}
+
+.enlaces li {
+    margin: 10px 0;
+}
+
+.enlaces a {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background: #d6001c;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}

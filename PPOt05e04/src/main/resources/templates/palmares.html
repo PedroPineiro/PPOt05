@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Palmarés - Flamengo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header>
+      <h1>Palmarés</h1>
+      <th:block th:replace="fragments/header.html :: nav"></th:block>
+    </header>
+
+    <main>
+      <h2>Títulos Principales</h2>
+      <ul class="palmares-lista">
+        <!-- Títulos (dinámicos desde el controlador) -->
+        <li th:each="titulo : ${titulos}">
+          <span th:text="${titulo}"></span>
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>⚽ Clube de Regatas do Flamengo</p>
+    </footer>
+  </body>
+</html>

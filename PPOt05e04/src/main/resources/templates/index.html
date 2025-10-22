@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clube de Regatas do Flamengo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header>
+      <h1>Clube de Regatas do Flamengo</h1>
+      <th:block th:replace="fragments/header.html :: menu"></th:block>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p th:inline="text">Fecha Actual: [[${fechaActual}]]</p>
+        <p th:inline="text">Bienvenido [[${mensajeBienvenida}]]</p>
+        <img th:src="@{/img/logo.png}" alt="Escudo Flamengo" class="logo" />
+        <p>
+          El <strong>Clube de Regatas do Flamengo</strong>, fundado en 1895 en
+          Río de Janeiro, es uno de los clubes más populares y exitosos de
+          Brasil y del mundo. Su afición, conocida como la “Nação Rubro-Negra”,
+          es una de las más grandes del planeta.
+        </p>
+      </section>
+      <section>
+        <a th:href="@{/?usuario=pedro}">http://localhost:9000/?usuario=pedro</a>
+      </section>
+
+      <section class="historia">
+        <h2>Historia</h2>
+        <p>
+          Flamengo nació como un club de remo en el barrio de Flamengo, pero
+          pronto se convirtió en un referente del fútbol brasileño. Su estadio
+          más emblemático es el Maracaná, donde vivió grandes momentos de gloria
+          nacional e internacional.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Spring Boot - Pedro</p>
+    </footer>
+  </body>
+</html>

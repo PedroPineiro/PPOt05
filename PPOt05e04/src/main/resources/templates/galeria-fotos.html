@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Galería - Flamengo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header>
+      <h1>Galería de Fotos</h1>
+      <th:block th:replace="fragments/header.html :: nav"></th:block>
+    </header>
+
+    <main>
+      <div class="galeria">
+        <img th:src="@{/img/plantilla.jpg}" alt="Plantilla Flamengo" />
+        <img th:src="@{/img/libertadores.jpg}" alt="Copa Libertadores" />
+        <img th:src="@{/img/equipacion.jpg}" alt="Celebración título" />
+      </div>
+    </main>
+
+    <footer>
+      <p>📸 Momentos históricos del Flamengo</p>
+    </footer>
+  </body>
+</html>
