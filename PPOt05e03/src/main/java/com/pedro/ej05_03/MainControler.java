@@ -1,5 +1,6 @@
 package com.pedro.ej05_03;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,10 +11,10 @@ import jakarta.validation.Valid;
 
 @Controller
 public class MainControler {
-    
-    // UN SOLO Map que guarda todos los votos
-    private final MainService mainService = new MainService();
-    
+
+    @Autowired
+    private MainService mainService;
+
     @GetMapping({"/", "/home", "/index"})
     public String index(Model model) {
         model.addAttribute("votos", mainService.getVotos());
