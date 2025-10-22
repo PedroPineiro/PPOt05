@@ -5,13 +5,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Controller
-public class mainController {
+public class MainController {
+
+    @Autowired
+    private FileStorageService fileStorageService;
 
     @GetMapping("/")
     public String index(@RequestParam Optional<String> usuario, Model model) {
@@ -26,7 +33,6 @@ public class mainController {
         } else {
             model.addAttribute("mensajeBienvenida", null);
         }
-        
         return "index";
     }
 
@@ -42,16 +48,18 @@ public class mainController {
         return "palmares";
     }
 
-    /* 
-    @GetMapping("/galeria-fotos")
-    public String galeriaFotos() {
-        return "galeria-fotos";
+    @GetMapping("/form")
+    public String formulario(Model model) {
+        model.addAttribute("formInfo", new FormInfo());
+        return "formView";
     }
 
+    @PostMapping("/form/submit")
+    public String postMethodName(FormInfo formInfo, @RequestParam MultipartFile file, Model model) {
+        fileStorageService.store(file);
+        model.addAttribute("formInfo", formInfo);
+        return "formViewResult";
+    }
     
-    @GetMapping("/enlaces-externos")
-    public String enlacesExternos() {
-        return "enlaces-externos";
-    }^
-    */
+    
 }

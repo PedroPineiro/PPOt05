@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario Enviado</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <header>
+        <th:block th:replace="~{fragments/header.html :: nav}"></th:block>
+    </header>
+    <body>
+        <h1>Disfrute su producto!</h1>
+        <p>Los datos enviados son:</p>
+        <ul>
+            <li>Nombre: <span th:text="${formInfo.nombre}"></span></li>
+            <li>DNI: <span th:text="${formInfo.DNI}"></span></li>
+            <li>Email: <span th:text="${formInfo.email}"></span></li>
+            <li>Producto: <span th:text="${formInfo.opcion}"></span></li>
+        </ul>
+    </body>
+</html>

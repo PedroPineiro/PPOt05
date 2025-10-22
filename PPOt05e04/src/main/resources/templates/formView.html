@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Merchandising</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <header>
+        <h1>Merchandising</h1>
+        <th:block th:replace="~{fragments/header.html :: nav}"></th:block>
+    </header>
+    <body>
+        <form action="#" method="post" th:action="@{/form/submit}" th:object="${formInfo}" enctype="multipart/form-data">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" required/>
+            <br/>
+
+            <label for="DNI">DNI:</label>
+            <input type="text" id="DNI" th:field="*{DNI}" required/>
+            <br/>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" th:field="*{email}" required/>
+            <br/>
+
+            <label for="product">Producto:</label>
+            <select th:field="*{opcion}">
+                <option 
+                    th:each="op : ${T(com.pedro.t5ej04.FormInfo.Opcion).values()}"
+                    th:value="${op}"
+                    th:text="${op}">
+                </option>
+            </select>
+            <br/>
+
+            <label for="carnetSocio">Adjuntar Carnet de Socio:</label>
+            <input type="file" id="carnetSocio" name="file"/>
+            <br/>
+
+            <label for="aceptarTerminos">Aceptar Términos y Condiciones:</label>
+            <input type="checkbox" id="aceptarTerminos" th:field="*{aceptarTerminos}" required/>
+            <br/>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>
