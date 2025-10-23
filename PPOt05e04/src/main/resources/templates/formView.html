@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Merchandising</title>
         <link rel="stylesheet" th:href="@{/css/style.css}" />
     </head>
-    <header>
-        <h1>Merchandising</h1>
-        <th:block th:replace="~{fragments/header.html :: nav}"></th:block>
-    </header>
     <body>
-        <form action="#" method="post" th:action="@{/form/submit}" th:object="${formInfo}" enctype="multipart/form-data">
+        <header>
+            <h1>Merchandising</h1>
+            <th:block th:replace="~{fragments/header :: nav}"></th:block>
+        </header>
+
+        <form th:action="@{/form/submit}" th:object="${formInfo}" method="post" enctype="multipart/form-data">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" th:field="*{nombre}" required/>
             <br/>
@@ -24,13 +25,13 @@
             <input type="email" id="email" th:field="*{email}" required/>
             <br/>
 
-            <label for="product">Producto:</label>
+            <label for="direccionEnvio">Dirección de envío:</label>
+            <input type="text" id="direccionEnvio" th:field="*{direccionEnvio}" required/>
+            <br/>
+
             <select th:field="*{opcion}">
-                <option 
-                    th:each="op : ${T(com.pedro.t5ej04.FormInfo.Opcion).values()}"
-                    th:value="${op}"
-                    th:text="${op}">
-                </option>
+                <option th:each="op : ${T(com.pedro.t5ej04.FormInfo.Opcion).values()}"
+                        th:value="${op}" th:text="${op}"></option>
             </select>
             <br/>
 
