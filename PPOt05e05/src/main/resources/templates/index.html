@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paises</title>
+  </head>
+  <body>
+    <h1>Info Paises</h1>
+    <form method="post" th:action="@{/submit}" th:object="${pais}">
+      <select onchange="this.form.submit()" th:field="*{nombre}">
+        <option value="">Seleccione un pais</option>
+        <option th:each="p:${paises}" th:value="${p}" th:text="${p}"></option>
+      </select>
+    </form>
+
+    <div th:if="${found}">
+      <div>Capital: <span th:text="${pais.capital}"></span></div>
+      <div>Población: <span th:text="${pais.poblacion}"></span></div>
+    </div>
+
+    <script>
+      document.getElementsByTagName("select")[0].children[0].disabled = true;
+    </script>
+  </body>
+</html>
