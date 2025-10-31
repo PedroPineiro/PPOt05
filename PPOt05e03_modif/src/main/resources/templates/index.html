@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elige tu película favorita</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <style>
+      td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+      }
+      img {
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center my-4">Elige tu película favorita</h1>
+    <form
+      action="#"
+      method="post"
+      th:action="@{/pelisForm/submit}"
+      th:object="${pelisForm}"
+    >
+      <table class="table table-bordered text-center">
+        <tr>
+          <td>
+            <img
+              th:src="@{/img/scarface.jpg}"
+              alt="Scarface"
+              style="width: 200px"
+            />
+            <p>Scarface</p>
+          </td>
+          <td>
+            <img
+              th:src="@{/img/thething.jpg}"
+              alt="The Thing"
+              style="width: 200px"
+            />
+            <p>The Thing</p>
+          </td>
+          <td>
+            <img
+              th:src="@{/img/leon.jpg}"
+              alt="Leon The Profesional"
+              style="width: 200px"
+            />
+            <p>Leon The Professional</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <i class="bi bi-heart"></i><span th:text="${votos.get(0)}"></span>
+          </td>
+          <td>
+            <i class="bi bi-heart"></i><span th:text="${votos.get(1)}"></span>
+          </td>
+          <td>
+            <i class="bi bi-heart"></i><span th:text="${votos.get(2)}"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="radio"
+              th:field="*{opcion}"
+              value="0"
+              id="peli1"
+              required
+            />
+          </td>
+          <td>
+            <input
+              type="radio"
+              th:field="*{opcion}"
+              value="1"
+              id="peli2"
+              required
+            />
+          </td>
+          <td>
+            <input
+              type="radio"
+              th:field="*{opcion}"
+              value="2"
+              id="peli3"
+              required
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input
+              type="email"
+              id="email"
+              th:field="*{email}"
+              class="form-control"
+              placeholder="tu@email.com"
+              required
+            />
+            <p
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"
+              class="text-danger"
+            ></p>
+          </td>
+          <td>
+            <input type="submit" value="Enviar" class="btn btn-primary" />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <!-- Mensaje de error -->
+    <div th:if="${error}" class="alert alert-danger text-center" role="alert">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <span th:text="${error}"></span>
+    </div>
+  </body>
+</html>
